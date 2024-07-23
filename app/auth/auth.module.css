@@ -1,0 +1,16 @@
+.body {
+    @apply min-h-screen flex flex-col items-center justify-center gap-2
+}
+
+.title {
+    @apply text-5xl font-bold text-[#90EE90];
+}
+
+.description {
+    @apply text-xl
+}
+
+.btn {
+    @apply w-80 border-2 mt-3 rounded-lg border-purple-700 py-2 text-center font-medium;
+    @apply hover:bg-purple-700 transition-colors;
+}
