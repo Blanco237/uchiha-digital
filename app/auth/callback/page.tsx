@@ -11,7 +11,7 @@ const Callback = () => {
     useEffect(() => {
         const userCode = decodeURIComponent(searchParams.get('code')!)
         const fetchUser = async () => {
-            const user = await fetch("https://bieba-backend.onrender.com/organization/get-user", {
+            const user = await fetch(process.env.NEXT_PUBLIC_BIEBA_BE_URL!, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
