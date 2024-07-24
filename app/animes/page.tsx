@@ -13,14 +13,20 @@ export default function Page() {
   const [filtered, setFiltered] = useState<typeof animes>([]);
   const router = useRouter();
   const defferedSearch = useDeferredValue(search);
-  const _user = localStorage.getItem('user')
-  const user = JSON.parse(_user || '');
+  const [user, setUser] = useState<any>(null);
+
 
   useEffect(() => {
-    if(!user) {
-      router.push('/');
+    if(typeof window !== 'undefined') {
+      const _usr = localStorage.getItem('user');
+      const _user = JSON.parse(_usr || '');
+      if(!_user) {
+        router.push('/');
+        return;
+      }
+      setUser(_user);
     }
-  }, [user])
+  }, [])
 
   useEffect(() => {
     const fetchAnimes = async () => {
@@ -57,7 +63,7 @@ export default function Page() {
   return (
     <div className={styles.body}>
       <header className="flex w-full justify-between items-center mb-8">
-        <h4>Hello, <span className="text-blue-700 font-medium">{user.email}</span></h4>
+        <h4>Hello, <span className="text-blue-700 font-medium">{user?.email}</span></h4>
         <Button
           type="button"
           variant="outlined"

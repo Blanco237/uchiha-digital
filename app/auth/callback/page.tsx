@@ -25,7 +25,9 @@ const Callback = () => {
             })
             console.log(user);
 
-            localStorage.setItem('user', JSON.stringify(user))
+            if(typeof window !== 'undefined') {
+                localStorage.setItem('user', JSON.stringify(user))
+            }
             router.push('/animes')
         }
         

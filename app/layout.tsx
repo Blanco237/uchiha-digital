@@ -16,6 +16,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import { Suspense } from "react";
 
 export default function RootLayout({
   children,
@@ -32,7 +33,11 @@ export default function RootLayout({
         }}
       >
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={theme}>
+            <Suspense>
+            {children}
+            </Suspense>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
